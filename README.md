@@ -1,12 +1,12 @@
 Adventure Game V2
 =====
-###How to run
+###How to run###
 
 - Open the terminal and change into the Adventure game v2 folder using `cd adventuregamev2`
 
 - You can then run the project by typing `python adventuregamev2.py` or by pressing the play button.
 ---
-###Idea for the game
+###Idea for the game###
 
 I'm currently reading through _learn python the hard way_ by Zed Shaw, and have previously
 created a text adventure game from one of the tasks in the book.
