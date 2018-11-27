@@ -129,7 +129,11 @@ class Fight(Scene):
             print("Try again!")
             guesses += 1
             guess = int(input())
-        if guesses == 10:
+            if guess < code:
+                print("Guess higher!")
+            elif guess > code:
+                print("Guess lower!")
+        if guesses == 9:
             return 'death'
         elif guess == code:
             print(dedent("""
@@ -140,11 +144,6 @@ class Fight(Scene):
             """))
             return 'last_scene'
 
-            # if guess > code:
-            #     print("Try guessing lower")
-            #     guesses.append(1)
-            # elif guess < code:
-            #     print("Try guessing higher")
 
 
 class Awkward(Scene):
@@ -155,7 +154,7 @@ class Awkward(Scene):
         His red eyes pierce yours, and smoke starts billowing out of his dragon-like nose. 
         You run to the device lab, knowing that this is your only hope.
         """))
-        return 'device_lab'
+        return 'fight'
 
 
 class TheEnd(Scene):
