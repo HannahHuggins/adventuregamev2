@@ -30,9 +30,12 @@ class Engine(object):
 class Death(Scene):
 
     quips = [
-        "You became a coopian you sucka",
-        "Your Mum needs a comma",
-        "You died you dickhead",
+        "You failed you mission and turned into a coopian.. oh well."
+        "You're caught by the project manager",
+        "",
+        "",
+        '',
+
     ]
 
     def enter(self):
@@ -55,14 +58,18 @@ class CentralCorridor(Scene):
         
         Do you:
         
-        Join them, hide, or pretend as if nothing has happened? 
+        a.) Join them
+        b.) Hide from them
+        c.) Pretend like nothing has happened
+        
+        Type 'a', 'b', or 'c' for either choice. 
         """))
 
         choice = input("> ")
 
-        if choice == "join":
+        if choice == "a":
             return 'death'
-        elif choice == "hide":
+        elif choice == "b":
             print(dedent("""
             You hide under your desk like a coward, listening out for the signs of 
             footsteps. 
@@ -70,7 +77,7 @@ class CentralCorridor(Scene):
             start humming a song under your breath. He sighs and turns away. You will never be a true coopian.
             """))
             return 'device_lab'
-        elif choice == "pretend":
+        elif choice == "c":
             print(dedent("""
             You follow the horde into the auditorium and see that they are taking part in a satanic ritual
             known as a "retro". You look on in horror as they all share ideas and "take part." You don't know
@@ -124,13 +131,14 @@ class Fight(Scene):
         guesses = 0
 
         while guess != code and guesses < 9:
-            print("Try again!")
-            guesses += 1
-            guess = int(input())
             if guess < code:
                 print("Guess higher!")
+                guesses += 1
+                input()
             elif guess > code:
                 print("Guess lower!")
+                guesses +=1
+                input()
         if guesses == 9:
             return 'death'
         elif guess == code:
