@@ -55,9 +55,7 @@ class CentralCorridor(Scene):
         
         Do you:
         
-        a.) Join them cheerily
-        b.) Hide
-        c.) Pretend as if nothing has happened
+        Join them, hide, or pretend as if nothing has happened? 
         """))
 
         choice = input("> ")
@@ -143,7 +141,6 @@ class Fight(Scene):
             
             """))
             return 'last_scene'
-
 
 
 class Awkward(Scene):
