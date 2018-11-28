@@ -49,20 +49,20 @@ class CentralCorridor(Scene):
         print("-" * 10)
         print(dedent("""
         The coopians of Planet coop have invaded your workplace and annihilated your
-        colleagues. You have been forced to adopt their way of life and their 
+        colleagues. You have been forced to adopt their way of life and their
         confusing agile principles. You mission is to remain as introverted as possible,
-        to avoid turning into a coopian. 
-        
-        The project manager is a tall, green-haired alien with horns protruding from his 
+        to avoid turning into a coopian.
+
+        The project manager is a tall, green-haired alien with horns protruding from his
         forehead. He screams "stand up!" and you watch as the other coopians flock to join him.
-        
+
         Do you:
-        
+
         a.) Join them
         b.) Hide from them
         c.) Pretend like nothing has happened
-        
-        Type 'a', 'b', or 'c' for either choice. 
+
+        Type 'a', 'b', or 'c' for either choice.
         """))
 
         choice = input("> ")
@@ -71,8 +71,8 @@ class CentralCorridor(Scene):
             return 'death'
         elif choice == "b":
             print(dedent("""
-            You hide under your desk like a coward, listening out for the signs of 
-            footsteps. 
+            You hide under your desk like a coward, listening out for the signs of
+            footsteps.
             The manager walks around the corner and glares at you. You avert your eyes and
             start humming a song under your breath. He sighs and turns away. You will never be a true coopian.
             """))
@@ -94,7 +94,7 @@ class DeviceLab(Scene):
     def enter(self):
         print(dedent("""
         You emerge from under your desk and run to the device lab, scanning the rows of desks for any sign
-        of the coopians. 
+        of the coopians.
         You fling open the door to the lab and grab the nearest ipad to use as a weapon.
         You see a coopian walk towards you and whap them in the side of the head with apples latest device.
         "You'll never convert me!" You shout.
@@ -126,29 +126,26 @@ class Fight(Scene):
         will remain shut and the alarms will sound, giving away your position.
         """))
 
-        code = randint(1,5)
-        guess = int(input("> "))
+        code = 10
         guesses = 0
 
-        while guess != code and guesses < 9:
+        while guesses < 9:
+            guess = int(input("[keypad]> "))
             if guess < code:
                 print("Guess higher!")
                 guesses += 1
-                input()
             elif guess > code:
                 print("Guess lower!")
-                guesses +=1
-                input()
-        if guesses == 9:
-            return 'death'
-        elif guess == code:
-            print(dedent("""
-            You grab an iphone in each hand, and connect the charger cables to them, using them as nunchucks.
-                They whistle as they swing through the air, knocking out the remaining coopians.
-                You survived!
-            
-            """))
-            return 'last_scene'
+                guesses += 1
+            elif guess == code:
+                print(dedent("""
+                You grab an iphone in each hand, and connect the charger cables to them, using them as nunchucks.
+                    They whistle as they swing through the air, knocking out the remaining coopians.
+                    You survived!
+
+                """))
+                return 'last_scene'
+            guesses += 1
 
 
 class Awkward(Scene):
@@ -156,7 +153,7 @@ class Awkward(Scene):
     def enter(self):
         print(dedent("""
         "It was great." You whisper, sweat forming on your brow. He senses your hesitation and moves closer.
-        His red eyes pierce yours, and smoke starts billowing out of his dragon-like nose. 
+        His red eyes pierce yours, and smoke starts billowing out of his dragon-like nose.
         You run to the device lab, knowing that this is your only hope.
         """))
         return 'fight'
