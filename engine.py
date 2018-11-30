@@ -3,31 +3,30 @@ from random import randint
 from textwrap import dedent
 
 
-class Scene(object):
+# class Scene(object):
+#
+#     def enter(self):
+#         print("This scene is not configured")
+#         print("Subclass it and implement enter()")
+#         exit(1)
 
-    def enter(self):
-        print("This scene is not configured")
-        print("Subclass it and implement enter()")
-        exit(1)
+# class Engine(object):
+#
+#     def __init__(self, scene_map):
+#         self.scene_map = scene_map
+#
+#     def play(self):
+#         current_scene = self.scene_map.opening_scene()
+#         last_scene = self.scene_map.next_scene('finished')
+#
+#         while current_scene != last_scene:
+#             next_scene_name = current_scene.enter()
+#             current_scene = self.scene_map.next_scene(next_scene_name)
+#
+#         current_scene.enter()
 
 
-class Engine(object):
-
-    def __init__(self, scene_map):
-        self.scene_map = scene_map
-
-    def play(self):
-        current_scene = self.scene_map.opening_scene()
-        last_scene = self.scene_map.next_scene('finished')
-
-        while current_scene != last_scene:
-            next_scene_name = current_scene.enter()
-            current_scene = self.scene_map.next_scene(next_scene_name)
-
-        current_scene.enter()
-
-
-class Death(Scene):
+def death():
 
     quips = [
         "You failed your mission and turned into a coopian.. oh well."
@@ -37,13 +36,11 @@ class Death(Scene):
         "You lost, better luck next time aye.",
 
     ]
-
-    def enter(self):
-        print(Death.quips[randint(0, len(self.quips)-1)])
-        exit(1)
+    print(quips[randint(0, len(quips)-1)])
+    exit(1)
 
 
-class CentralCorridor(Scene):
+class CentralCorridor(object):
 
     def enter(self):
         print("-" * 10)
@@ -68,7 +65,7 @@ class CentralCorridor(Scene):
         choice = input("> ")
 
         if choice == "a":
-            return 'death'
+            death()
         elif choice == "b":
             print(dedent("""
             You hide under your desk like a coward, listening out for the signs of
@@ -89,7 +86,7 @@ class CentralCorridor(Scene):
             return 'central_corridor'
 
 
-class DeviceLab(Scene):
+class DeviceLab(object):
 
     def enter(self):
         print(dedent("""
@@ -102,7 +99,7 @@ class DeviceLab(Scene):
         return 'fight'
 
 
-class Auditorium(Scene):
+class Auditorium(object):
 
     def enter(self):
         print(dedent("""
@@ -116,7 +113,7 @@ class Auditorium(Scene):
         return 'awkward'
 
 
-class Fight(Scene):
+class Fight(object):
 
     def enter(self):
         print(dedent("""
@@ -148,7 +145,7 @@ class Fight(Scene):
             guesses += 1
 
 
-class Awkward(Scene):
+class Awkward(object):
 
     def enter(self):
         print(dedent("""
@@ -159,7 +156,7 @@ class Awkward(Scene):
         return 'fight'
 
 
-class TheEnd(Scene):
+class TheEnd(object):
 
     def enter(self):
         print("You have finished the game!")
@@ -170,7 +167,7 @@ class Map(object):
 
     scenes = {
         'central_corridor': CentralCorridor(),
-        'death': Death(),
+        # 'death': Death(),
         'device_lab': DeviceLab(),
         'auditorium': Auditorium(),
         'fight': Fight(),
@@ -188,7 +185,8 @@ class Map(object):
     def opening_scene(self):
         return self.next_scene(self.start_scene)
 
+CentralCorridor().enter()
 
 a_map = Map('central_corridor')
-a_game = Engine(a_map)
-a_game.play()
+# a_game = Engine(a_map)
+# a_game.play()
