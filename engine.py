@@ -30,11 +30,11 @@ class Engine(object):
 class Death(Scene):
 
     quips = [
-        "You failed you mission and turned into a coopian.. oh well."
-        "You're caught by the project manager",
-        "",
-        "",
-        '',
+        "You failed your mission and turned into a coopian.. oh well."
+        "You're caught by the project manager who forces you to contribute, this really is the end.",
+        "One of the coopians catches you and brainwashes you, you become one of them!",
+        "You died you sucker",
+        "You lost, better luck next time aye.",
 
     ]
 
